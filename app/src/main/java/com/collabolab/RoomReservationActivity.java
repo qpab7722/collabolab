@@ -112,7 +112,13 @@ public class RoomReservationActivity extends AppCompatActivity  {
 
         tv_cap=findViewById(R.id.tv_cap);
         tv_cap.setPaintFlags(tv_cap.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        tv_cap.setText(cd.getCapacity());
+        String tmp2="";
+        switch (cd.getCapacity()){
+            case "0": tmp2="3~5명";  break;
+            case "1": tmp2="5~10명";  break;
+            case "2": tmp2="10명이상";  break;
+        }
+        tv_cap.setText(tmp2);
 
         tv_item=findViewById(R.id.tv_item);
         tv_item.setPaintFlags(tv_item.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -120,11 +126,11 @@ public class RoomReservationActivity extends AppCompatActivity  {
         String tmp="";
         for(int i=0;i<cd.getItemList().size();i++) {
             switch (cd.getItemList().get(i)){
-                case "0": tmp="컴퓨터";  break;
-                case "1": tmp="화이트 보드";  break;
+                case "1": tmp="컴퓨터";  break;
+                case "3": tmp="화이트 보드";  break;
                 case "2": tmp="개방형";  break;
-                case "3": tmp="빔 프로젝터";  break;
-                case "4": tmp="스튜디오";  break;
+                case "4": tmp="빔 프로젝터";  break;
+                case "5": tmp="스튜디오";  break;
             }
             itemstr += tmp+ ",";
         }
