@@ -21,7 +21,7 @@ import java.util.Iterator;
 public class SetTypeActivity extends AppCompatActivity {
 
 
-    Button btn_open,btn_closed,btn_com,btn_board,btn_beam,btn_film, btn_end;
+    Button btn_open,btn_com,btn_board,btn_beam,btn_film, btn_end;
     TextView tv_sel1,tv_sel2,tv_sel3;
      ArrayList<String> selectedType;
 
@@ -39,14 +39,12 @@ public class SetTypeActivity extends AppCompatActivity {
 
 
         btn_open=findViewById(R.id.btn_typeopen);
-        btn_closed=findViewById(R.id.btn_typeclosed);
         btn_com=findViewById(R.id.btn_typecom);
         btn_board=findViewById(R.id.btn_typeboard);
         btn_beam=findViewById(R.id.btn_typebeam);
         btn_film=findViewById(R.id.btn_typefilm);
 
         btn_open.setOnClickListener(mClickListener);
-        btn_closed.setOnClickListener(mClickListener);
         btn_com.setOnClickListener(mClickListener);
         btn_board.setOnClickListener(mClickListener);
         btn_beam.setOnClickListener(mClickListener);
@@ -69,13 +67,13 @@ public class SetTypeActivity extends AppCompatActivity {
                     if(val.equals(text))
                         it.remove();
                 }
-                updateVIew();
+                //updateVIew();
                 button.setSelected(!button.isSelected());
                 Log.e("type",selectedType.size()+"   삭제 ");
             }else if (selectedType.size()<3){
                 //추가(3개 아래일때만)
                 selectedType.add(text);
-                updateVIew();
+                //updateVIew();
                 button.setSelected(!button.isSelected());
                 Log.e("type",selectedType.size()+"   추가 ");
             }

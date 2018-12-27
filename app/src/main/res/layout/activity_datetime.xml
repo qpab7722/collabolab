@@ -8,42 +8,42 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@color/mainColor">
-
+        android:layout_height="180dp">
         <TextView
+            android:id="@+id/tv_text"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="필요 조건 순으로 입력"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="선택 사항"
+            android:textSize="15dp"
             android:layout_marginLeft="30dp"
-            android:layout_above="@+id/tv_datetag"/>
-
+            android:layout_centerVertical="true"/>
         <TextView
             android:id="@+id/tv_datetag"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:background="@drawable/shape"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"/>
-
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/tv_text"
+            android:text="시간"
+            android:padding="5dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="예약 날짜와 시간을 입력해주세요."
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
 
-    <CalendarView
-        android:id="@+id/cv_cal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </CalendarView>
-
-    <TimePicker
-        android:id="@+id/tp_time"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:timePickerMode="spinner">
-    </TimePicker>
     <Button
         android:id="@+id/btn_datetime"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
+
 </LinearLayout>

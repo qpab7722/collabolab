@@ -21,21 +21,24 @@ public class SetDateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_date);
+        setContentView(R.layout.activity_datetime);
+        getSupportActionBar().hide();
 
         calendarView= findViewById(R.id.cv_cal);
         timePicker=findViewById(R.id.tp_time);
         btn_end = findViewById(R.id.btn_datetime);
 
+        /*
         //set calendar 2month
         Calendar calendar = Calendar.getInstance();
         Long min = calendar.getTime().getTime();
         Long max = 2629746000L + calendar.getTime().getTime();
         calendarView.setMinDate(min);
         calendarView.setMaxDate(max);
+        */
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            hour = timePicker.getHour();
+//            hour = timePicker.getHour();
         }
 
         intent = new Intent(this, SetPeopleActivity.class);
