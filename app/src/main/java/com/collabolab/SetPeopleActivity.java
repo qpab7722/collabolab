@@ -33,11 +33,11 @@ public class SetPeopleActivity extends Activity {
         //capacity=  gintent.getStringExtra("capacity").toString();
 
         btn_people0=findViewById(R.id.btn_35);
-        ani(btn_people0,80f,80f);
+        //ani(btn_people0,-30f,-30f);
         btn_people1=findViewById(R.id.btn_510);
-        ani(btn_people1,-80f,80f);
+       // ani(btn_people1,30f,-30f);
         btn_people2=findViewById(R.id.btn_10up);
-        ani(btn_people2,80f,-80f);
+        //ani(btn_people2,-30f,-30f);
 
         btn_people0.setOnClickListener(mClickListener);
         btn_people1.setOnClickListener(mClickListener);

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/mainBack">
-
     <RelativeLayout
         android:id="@+id/rl_menu"
         android:layout_width="match_parent"
@@ -16,9 +15,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:src="@drawable/txt_main"
-            android:scaleType="fitCenter"
-            android:scaleX="1.2"
-            android:scaleY="1.2"/>
+            android:scaleType="fitCenter"/>
         <ImageButton
             android:id="@+id/ib_menu"
             android:layout_width="30dp"
@@ -55,7 +52,7 @@
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_text"
             android:textColor="#000000"
-            android:text="시간"
+            android:text="  시간  "
             android:padding="5dp"/>
         <TextView
             android:id="@+id/tv_peopletag"
@@ -75,10 +72,11 @@
         android:layout_height="100dp"
         android:layout_below="@+id/rl_top">
         <ImageView
-            android:id="@+id/bar1"
+            android:id="@+id/bar2"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:src="@drawable/bar1"/>
+            android:src="@drawable/bar2"
+            android:layout_marginLeft="18dp"/>
         <TextView
             android:id="@+id/tv_info"
             android:layout_width="250dp"
