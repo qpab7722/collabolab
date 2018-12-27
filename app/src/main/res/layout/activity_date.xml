@@ -33,6 +33,31 @@
         app:emptyItemColor="@color/white"
         app:selectionColor="@color/white" />
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/mainColor">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="필요 조건 순으로 입력"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_above="@+id/tv_datetag"/>
+
+        <TextView
+            android:id="@+id/tv_datetag"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/shape"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"/>
+
+    </RelativeLayout>
+
+    <CalendarView
+        android:id="@+id/cv_cal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/wv_day"

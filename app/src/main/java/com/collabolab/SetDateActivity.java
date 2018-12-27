@@ -34,7 +34,8 @@ public class SetDateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_date);
+        setContentView(R.layout.activity_datetime);
+        getSupportActionBar().hide();
 
         listMonth = new ArrayList<>();
         listMonth.add(new TextDrawable(String.valueOf(12)));
@@ -114,6 +115,7 @@ public class SetDateActivity extends AppCompatActivity {
         tvWeekday = findViewById(R.id.tv_weekday);
         tvWeekdayEng = findViewById(R.id.tv_weekday_eng);
 
+<<<<<<< HEAD
         spinTime = findViewById(R.id.spinner_time);
         ArrayAdapter<String> TImeadapter = new ArrayAdapter<String>(this, R.layout.spinner_item_day_picker, getResources().getStringArray(R.array.time));
         spinTime.setAdapter(TImeadapter);
@@ -127,6 +129,20 @@ public class SetDateActivity extends AppCompatActivity {
                 Date date = c.getTime();
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:00:00");
                 String data = simpleDateFormat.format(date);
+=======
+        /*
+        //set calendar 2month
+        Calendar calendar = Calendar.getInstance();
+        Long min = calendar.getTime().getTime();
+        Long max = 2629746000L + calendar.getTime().getTime();
+        calendarView.setMinDate(min);
+        calendarView.setMaxDate(max);
+        */
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//            hour = timePicker.getHour();
+        }
+>>>>>>> master
 
                 intent = new Intent(getApplicationContext(), SetPeopleActivity.class);
                 intent.putExtra("date",data);

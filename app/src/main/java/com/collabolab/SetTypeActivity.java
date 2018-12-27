@@ -4,6 +4,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
@@ -15,38 +16,54 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class SetTypeActivity extends AppCompatActivity {
 
 
-    Button btn_open,btn_closed,btn_com,btn_board,btn_beam,btn_film, btn_end;
+    Button btn_open,btn_com,btn_board,btn_beam,btn_film, btn_end;
+    TextView tv_peopletag;
     TextView tv_sel1,tv_sel2,tv_sel3;
-     ArrayList<String> selectedType;
+    ArrayList<String> selectedType;
 
-    //배열로 보여줭
+     String capacity;
+     String[] itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
+        getSupportActionBar().hide();
         selectedType=new ArrayList<String>();
 
-        tv_sel1=findViewById(R.id.tv_sel1);
-        tv_sel2=findViewById(R.id.tv_sel2);
-        tv_sel3=findViewById(R.id.tv_sel3);
-
+        tv_sel1 = findViewById(R.id.tv_typetag1);
+        tv_sel2 = findViewById(R.id.tv_typetag2);
+        tv_sel3 = findViewById(R.id.tv_typetag3);
+        tv_sel1.setVisibility(View.INVISIBLE);
+        tv_sel2.setVisibility(View.INVISIBLE);
+        tv_sel3.setVisibility(View.INVISIBLE);
 
         btn_open=findViewById(R.id.btn_typeopen);
-        btn_closed=findViewById(R.id.btn_typeclosed);
         btn_com=findViewById(R.id.btn_typecom);
         btn_board=findViewById(R.id.btn_typeboard);
         btn_beam=findViewById(R.id.btn_typebeam);
         btn_film=findViewById(R.id.btn_typefilm);
 
         btn_open.setOnClickListener(mClickListener);
-        btn_closed.setOnClickListener(mClickListener);
         btn_com.setOnClickListener(mClickListener);
         btn_board.setOnClickListener(mClickListener);
         btn_beam.setOnClickListener(mClickListener);
@@ -54,6 +71,22 @@ public class SetTypeActivity extends AppCompatActivity {
 
         btn_end= findViewById(R.id.btn_typend);
         btn_end.setOnClickListener(mendClickListener);
+
+        tv_peopletag=findViewById(R.id.tv_peopletag);
+        Intent gintent = getIntent();
+        capacity=  gintent.getStringExtra("capacity").toString();
+        switch (capacity){
+            case "0":
+                tv_peopletag.setText(" 3~5명 ");
+                break;
+            case "1":
+                tv_peopletag.setText(" 6~10명 ");
+                break;
+            case "2":
+                tv_peopletag.setText(" 11명이상 ");
+                break;
+
+        }
 
     }
 
@@ -80,24 +113,118 @@ public class SetTypeActivity extends AppCompatActivity {
                 Log.e("type",selectedType.size()+"   추가 ");
             }
         }};
+
+    private void updateVIew(){
+        tv_sel1.setVisibility(View.INVISIBLE);
+        tv_sel2.setVisibility(View.INVISIBLE);
+        tv_sel3.setVisibility(View.INVISIBLE);
+        if(selectedType.size()>0) {
+            tv_sel1.setVisibility(View.VISIBLE);
+            tv_sel1.setText(selectedType.get(0));
+        }
+        if(selectedType.size()>1){
+            tv_sel2.setVisibility(View.VISIBLE);
+            tv_sel2.setText(selectedType.get(1));
+        }
+        if(selectedType.size()>2){
+            tv_sel3.setVisibility(View.VISIBLE);
+            tv_sel3.setText(selectedType.get(2));
+        }
+    }
+
     View.OnClickListener mendClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View button) {
-            createNotification();
+            itemList=new String[selectedType.size()];
+            if(selectedType.size()>0)
+                itemList[0]=selectedType.get(0);
+            if(selectedType.size()>1)
+                itemList[1]=selectedType.get(1);
+            if(selectedType.size()>2)
+                itemList[2]=selectedType.get(2);
+            for(int i =0 ;i<selectedType.size();i++)
+                Log.e("ㅇㅇㅇㅇㅇㅇ","리쮸튜"+itemList[i]);
+
+            new JSONTask().execute("http://52.78.178.50/api/android/search/room_search");
         }
     };
+    public class JSONTask extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... urls) {
 
-    private void updateVIew(){
-        tv_sel1.setText("");
-        tv_sel2.setText("");
-        tv_sel3.setText("");
-        if(selectedType.size()>0)
-            tv_sel1.setText(selectedType.get(0));
-        if(selectedType.size()>1)
-            tv_sel2.setText(selectedType.get(1));
-        if(selectedType.size()>2)
-            tv_sel3.setText(selectedType.get(2));
+            try {
+                Log.e("ㅇㅇㅇㅇㅇㅇ","돌아간다`할아부지");
+                //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.accumulate("capacity", capacity);
+                jsonObject.accumulate("itemList", new JSONArray(selectedType));
+                jsonObject.accumulate("startDate", "2018-12-27 20:00:00");
+                jsonObject.accumulate("endDate", "2018-12-27 21:00:00");
+
+                HttpURLConnection con = null;
+                BufferedReader reader = null;
+
+                try{
+                    URL url = new URL(urls[0]);//url을 가져온다.
+                    con = (HttpURLConnection) url.openConnection();
+                    con.connect();//연결 수행
+                    //입력 스트림 생성
+                    InputStream stream = con.getInputStream();
+                    //속도를 향상시키고 부하를 줄이기 위한 버퍼를 선언한다.
+                    reader = new BufferedReader(new InputStreamReader(stream));
+
+                    //실제 데이터를 받는곳
+                    StringBuffer buffer = new StringBuffer();
+
+                    //line별 스트링을 받기 위한 temp 변수
+                    String line = "";
+
+                    //아래라인은 실제 reader에서 데이터를 가져오는 부분이다. 즉 node.js서버로부터 데이터를 가져온다.
+                    while((line = reader.readLine()) != null){
+                        buffer.append(line);
+                    }
+
+                    //다 가져오면 String 형변환을 수행한다. 이유는 protected String doInBackground(String… urls) 니까
+                    return buffer.toString();
+
+                    //아래는 예외처리 부분이다.
+                } catch (MalformedURLException e){
+                    e.printStackTrace();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                } finally {
+                    //종료가 되면 disconnect메소드를 호출한다.
+                    if(con != null){
+                        con.disconnect();
+                    }
+                    try {
+                        //버퍼를 닫아준다.
+                        if(reader != null){
+                            reader.close();
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }//finally 부분
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            btn_end.setText(result);//서버로 부터 받은 값을 출력해주는 부
+            Log.e("ㅇㅇㅇㅇㅇㅇ",result);
+        }
+
     }
+
 
     private void createNotification() {
 
