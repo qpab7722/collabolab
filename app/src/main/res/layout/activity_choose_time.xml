@@ -8,35 +8,61 @@
     android:background="@color/mainBack"
     android:padding="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="예약할\n시간을\n선택하세요."
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:lineHeight="36sp"/>
+    <RelativeLayout
+        android:id="@+id/rl_menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/txt_main"
+            android:scaleType="fitCenter"/>
+        <ImageButton
+            android:id="@+id/ib_menu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_menu"/>
+    </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_time"
-        android:layout_width="170dp"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_below="@+id/rl_menu">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="예약할\n시간을\n선택하세요."
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:lineHeight="36sp"/>
 
-    <Button
-        android:id="@+id/btn_pre"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/left"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"/>
-    <Button
-        android:id="@+id/btn_reserveend"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/right"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_time"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true">
+        </android.support.v7.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/btn_pre"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/left"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"/>
+        <Button
+            android:id="@+id/btn_reserveend"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/right"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
 
 </RelativeLayout>

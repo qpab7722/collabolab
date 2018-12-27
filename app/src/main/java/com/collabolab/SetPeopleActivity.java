@@ -7,9 +7,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,37 @@ public class SetPeopleActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_people);
+
+        ImageButton ibMenu = findViewById(R.id.ib_menu);
+        ibMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(getApplicationContext(), view);
+                popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Intent intent;
+                        if (item.getTitle().equals("상세보기")) {
+                            intent = new Intent(getApplicationContext(), ShowActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (item.getTitle().equals("예약하기")) {
+                            intent = new Intent(getApplicationContext(), SetDateActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (item.getTitle().equals("내 정보")) {
+                            intent = new Intent(getApplicationContext(), MyInfoActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        return true;
+                    }
+                });
+                popup.show();//showing popup menu
+            }
+        });
+
         cd = Condition.getInstance();
         cd.setCapacity(null);
         //get intent
