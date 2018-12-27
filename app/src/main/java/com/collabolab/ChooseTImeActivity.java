@@ -98,12 +98,12 @@ public class ChooseTImeActivity extends Activity {
                 Calendar c = Calendar.getInstance();
                 c.set(2018,cd.getMonth(),cd.getDay(),(int)Integer.parseInt(str),0);
                 Date date = c.getTime();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:00:00");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:00:00");
                 String data = simpleDateFormat.format(date);
                 Log.d("타임!", "date: "+ data);
                 cd.setStartDate(data);
 
-                simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:59:59");
+                simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:59:59");
                 data = simpleDateFormat.format(date);
                 cd.setEndDate(data);
 

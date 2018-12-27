@@ -38,6 +38,8 @@ public class SetDateActivity extends Activity {
         setContentView(R.layout.activity_date);
 
         cd = Condition.getInstance();
+        cd.setStartDate(null);
+        cd.setEndDate(null);
 
         listMonth = new ArrayList<>();
         listMonth.add(new TextDrawable(String.valueOf(12)));
@@ -142,9 +144,8 @@ public class SetDateActivity extends Activity {
                 cd.setEndDate(data);
                 cd.setDay(day);
                 cd.setMonth(month-1);
-
-                startActivity(intent);
                 Log.d(TAG, "date: "+ data);
+                startActivity(intent);
             }
         });
     }

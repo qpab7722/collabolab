@@ -52,7 +52,7 @@
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_text"
             android:textColor="#000000"
-            android:text="시간"
+            android:text="  시간  "
             android:padding="5dp"/>
     </RelativeLayout>
     <RelativeLayout
