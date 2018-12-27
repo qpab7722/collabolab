@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
@@ -17,10 +18,18 @@ public class SetPeopleActivity extends Activity {
     Button btn_people0,btn_people1,btn_people2;
     Intent intent;
 
+    String Date;
+    Condition cd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_people);
+        cd = Condition.getInstance();
+        //get intent
+        Intent gintent = getIntent();
+        Log.e("dsad",cd.getStartDate()+"\n"+cd.getEndDate());
+        //capacity=  gintent.getStringExtra("capacity").toString();
 
         btn_people0=findViewById(R.id.btn_35);
         ani(btn_people0,80f,80f);
@@ -41,6 +50,7 @@ public class SetPeopleActivity extends Activity {
     View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            cd.setCapacity(v.getTag().toString());
             intent.putExtra("capacity",v.getTag().toString());
             startActivity(intent);
             Toast.makeText(getApplicationContext(),""+v.getTag().toString(),Toast.LENGTH_SHORT).show();
