@@ -25,18 +25,12 @@ public class SetTypeActivity extends AppCompatActivity {
     TextView tv_sel1,tv_sel2,tv_sel3;
      ArrayList<String> selectedType;
 
-    //배열로 보여줭
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
+        getSupportActionBar().hide();
         selectedType=new ArrayList<String>();
-
-        tv_sel1=findViewById(R.id.tv_sel1);
-        tv_sel2=findViewById(R.id.tv_sel2);
-        tv_sel3=findViewById(R.id.tv_sel3);
-
 
         btn_open=findViewById(R.id.btn_typeopen);
         btn_com=findViewById(R.id.btn_typecom);
