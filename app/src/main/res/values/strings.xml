@@ -7,8 +7,9 @@
 
     <string name="text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eget ligula eu lectus lobortis condimentum.</string>
 
-    <string name="menu1">상세보기</string>
+    <string name="menu1">공간소개</string>
     <string name="menu2">예약하기</string>
-    <string name="menu3">내 정보</string>
+    <string name="menu3">사용현황</string>
+    <string name="menu4">이용내역</string>
 
 </resources>

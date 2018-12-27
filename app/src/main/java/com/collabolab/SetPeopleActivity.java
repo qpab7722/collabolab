@@ -45,7 +45,7 @@ public class SetPeopleActivity extends Activity {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         Intent intent;
-                        if (item.getTitle().equals("상세보기")) {
+                        if (item.getTitle().equals("공간소개")) {
                             intent = new Intent(getApplicationContext(), ShowActivity.class);
                             startActivity(intent);
                             finish();
@@ -53,7 +53,11 @@ public class SetPeopleActivity extends Activity {
                             intent = new Intent(getApplicationContext(), SetDateActivity.class);
                             startActivity(intent);
                             finish();
-                        } else if (item.getTitle().equals("내 정보")) {
+                        } else if (item.getTitle().equals("사용현황")) {
+                            intent = new Intent(getApplicationContext(), MyInfoActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (item.getTitle().equals("이용내역")) {
                             intent = new Intent(getApplicationContext(), MyInfoActivity.class);
                             startActivity(intent);
                             finish();
