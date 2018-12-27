@@ -2,6 +2,7 @@ package com.collabolab;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -11,8 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+
+import android.widget.TextView;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,16 +48,22 @@ public class RoomReservationActivity extends AppCompatActivity  {
     String result;
     int cardNum;
     JSONArray objArr;
-    Button btn_end;
+    Button btn_end,btn_pre;
     Intent intent;
 
     String roomid;
+    TextView info;
+
+    TextView tv_date;
+
+    Condition cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+        cd = Condition.getInstance();
         setContentView(R.layout.activity_roomreservation);
 
         ImageButton ibMenu = findViewById(R.id.ib_menu);
@@ -90,6 +101,10 @@ public class RoomReservationActivity extends AppCompatActivity  {
         btn_end=findViewById(R.id.btn_cardsel);
         btn_end.setOnClickListener(mClickListener);
 
+        tv_date=findViewById(R.id.tv_date);
+        tv_date.setPaintFlags(tv_date.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        //tv_date.setText(cd.get);
+
         //json데이터 분해~~~
         Intent gintent = getIntent();
         result=  gintent.getStringExtra("roomresult").toString();
@@ -101,6 +116,8 @@ public class RoomReservationActivity extends AppCompatActivity  {
             e.printStackTrace();
         }
 
+        info=findViewById(R.id.tv_info);
+        info.setText("컴퓨터 실습실\n"+cardNum+"개실 예약 가능합니다.");
         mCardAdapter = new CardPagerAdapter();
         for(int i=0;i<cardNum;i++){
             JSONObject jsonOBject = null;
@@ -125,7 +142,14 @@ public class RoomReservationActivity extends AppCompatActivity  {
         mViewPager.setOffscreenPageLimit(3);
 
         intent = new Intent(this, ChooseTImeActivity.class);
+        btn_pre=findViewById(R.id.btn_pre);
+        btn_pre.setOnClickListener(mpreClickListener);
     }
+    View.OnClickListener mpreClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish();
+        }};
 
     View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
