@@ -145,6 +145,26 @@ public class SetTypeActivity extends Activity {
                 button.setSelected(!button.isSelected());
                 Log.e("type",selectedType.size()+"   추가 ");
             }
+            if (button.getId()==R.id.btn_typebeam && !button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.beam_on));
+            else if (button.getId()==R.id.btn_typebeam && button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.beam_off));
+            else if (button.getId()==R.id.btn_typeboard && !button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.board_on));
+            else if (button.getId()==R.id.btn_typeboard && button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.board_off));
+            else if (button.getId()==R.id.btn_typecom && !button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.com_on));
+            else if (button.getId()==R.id.btn_typecom && button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.com_off));
+            else if (button.getId()==R.id.btn_typefilm && !button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.camera_on));
+            else if (button.getId()==R.id.btn_typefilm && button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.camera_off));
+            else if (button.getId()==R.id.btn_typeopen && !button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.open_on));
+            else if (button.getId()==R.id.btn_typeopen && button.isSelected())
+                button.setBackground(getResources().getDrawable(R.drawable.open_off));
         }};
 
     private void updateVIew(){
