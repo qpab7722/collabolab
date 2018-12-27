@@ -22,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SetPeopleActivity"></activity>
+        <activity android:name=".SetTypeActivity"></activity>
+        <activity android:name=".RoomReservationActivity"></activity>
     </application>
 
 </manifest>

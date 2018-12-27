@@ -43,6 +43,8 @@ public class SetTypeActivity extends AppCompatActivity {
      String capacity;
      String[] itemList;
 
+     Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +87,9 @@ public class SetTypeActivity extends AppCompatActivity {
             case "2":
                 tv_peopletag.setText(" 11명이상 ");
                 break;
-
         }
 
+        intent = new Intent(this, RoomReservationActivity.class);
     }
 
     View.OnClickListener mClickListener = new View.OnClickListener() {
@@ -157,7 +159,10 @@ public class SetTypeActivity extends AppCompatActivity {
                 //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("capacity", capacity);
-                jsonObject.accumulate("itemList", new JSONArray(selectedType));
+               // String[] test= new String[2];
+                selectedType.add("1");
+                selectedType.add("0");
+                jsonObject.accumulate("itemList", new JSONArray(selectedType) );//new JSONArray(selectedType)
                 jsonObject.accumulate("startDate", "2018-12-27 20:00:00");
                 jsonObject.accumulate("endDate", "2018-12-27 21:00:00");
 
@@ -167,60 +172,61 @@ public class SetTypeActivity extends AppCompatActivity {
                 try{
                     URL url = new URL(urls[0]);//url을 가져온다.
                     con = (HttpURLConnection) url.openConnection();
-                    con.connect();//연결 수행
-                    //입력 스트림 생성
+
+                    con.setRequestMethod("POST");
+                    con.setRequestProperty("Cache-Control", "no-cache");
+                    con.setRequestProperty("Content-Type", "application/json");
+                    con.setRequestProperty("Accept", "text/html");
+                    con.setDoOutput(true);
+                    con.setDoInput(true);
+                    con.connect();
+
+                    OutputStream outStream = con.getOutputStream();
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outStream));
+                    writer.write(jsonObject.toString());
+                    writer.flush();
+                    writer.close();
+
+                    //서버로 부터 데이터를 받음
                     InputStream stream = con.getInputStream();
-                    //속도를 향상시키고 부하를 줄이기 위한 버퍼를 선언한다.
                     reader = new BufferedReader(new InputStreamReader(stream));
-
-                    //실제 데이터를 받는곳
                     StringBuffer buffer = new StringBuffer();
-
-                    //line별 스트링을 받기 위한 temp 변수
                     String line = "";
-
-                    //아래라인은 실제 reader에서 데이터를 가져오는 부분이다. 즉 node.js서버로부터 데이터를 가져온다.
                     while((line = reader.readLine()) != null){
                         buffer.append(line);
                     }
+                    return buffer.toString();//서버로 부터 받은 값을 리턴해줌 아마 OK!!가 들어올것임
 
-                    //다 가져오면 String 형변환을 수행한다. 이유는 protected String doInBackground(String… urls) 니까
-                    return buffer.toString();
-
-                    //아래는 예외처리 부분이다.
                 } catch (MalformedURLException e){
                     e.printStackTrace();
-
                 } catch (IOException e) {
                     e.printStackTrace();
-
                 } finally {
-                    //종료가 되면 disconnect메소드를 호출한다.
                     if(con != null){
                         con.disconnect();
                     }
                     try {
-                        //버퍼를 닫아준다.
                         if(reader != null){
-                            reader.close();
+                            reader.close();//버퍼를 닫아줌
                         }
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-                }//finally 부분
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
+
         }
+
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             btn_end.setText(result);//서버로 부터 받은 값을 출력해주는 부
             Log.e("ㅇㅇㅇㅇㅇㅇ",result);
+            startActivity(intent);
         }
 
     }
