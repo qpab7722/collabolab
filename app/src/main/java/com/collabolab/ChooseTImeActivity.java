@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,11 +51,41 @@ public class ChooseTImeActivity extends Activity {
 
     Condition cd;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_time);
+
+        ImageButton ibMenu = findViewById(R.id.ib_menu);
+        ibMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(getApplicationContext(), view);
+                popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Intent intent;
+                        if (item.getTitle().equals("상세보기")) {
+                            intent = new Intent(getApplicationContext(), ShowActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (item.getTitle().equals("예약하기")) {
+                            intent = new Intent(getApplicationContext(), SetDateActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (item.getTitle().equals("내 정보")) {
+                            intent = new Intent(getApplicationContext(), MyInfoActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        return true;
+                    }
+                });
+                popup.show();//showing popup menu
+            }
+        });
+
         cd = Condition.getInstance();
 
         for (int i=0; i<24; i++) { time.add(i); }
