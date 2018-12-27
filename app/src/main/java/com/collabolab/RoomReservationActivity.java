@@ -146,8 +146,8 @@ public class RoomReservationActivity extends AppCompatActivity  {
                 jsonOBject = objArr.getJSONObject(i);
                 String name =jsonOBject.getString("name");
                 String id =jsonOBject.getString("roomId");
-                Log.e("ㅇㅇㅇㅇㅇㅇ",objArr.length()+"d"+name);
-                mCardAdapter.addCardItem(new CardItem(name, id));
+                Log.e("ㅇㅇㅇㅇㅇㅇ",objArr.length()+"d"+name+"idddddddddd"+id);
+                mCardAdapter.addCardItem(new CardItem(name,id));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -176,7 +176,8 @@ public class RoomReservationActivity extends AppCompatActivity  {
         @Override
         public void onClick(View v) {
             CardItem item = mCardAdapter.getCardItemAt(mViewPager.getCurrentItem());
-            roomid = item.getText();
+            Log.e("current itme",""+mViewPager.getCurrentItem());
+            roomid = item.getText().toString();
             Log.e("시간표 줘라",roomid);
             new JSONTask2().execute("http://52.78.178.50/api/common/reserv_check");
             //startActivity(intent);
@@ -195,7 +196,7 @@ public class RoomReservationActivity extends AppCompatActivity  {
                 //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("roomId", roomid);
-                jsonObject.accumulate("offsetDate", "2018-12-27");
+                jsonObject.accumulate("offsetDate", "2018-12-27");//날짜 현재 날짜로
 
                 HttpURLConnection con = null;
                 BufferedReader reader = null;

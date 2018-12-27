@@ -20,7 +20,7 @@ public class PutPurposeActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"예약이 완료되었습니다(물론 뻥)",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"예약이 완료되었습니다",Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,10 +47,11 @@ public class ChooseTImeActivity extends Activity {
 
     List<Integer> selectedtime = new ArrayList<>();
 
-    Button btn_next;
+    Button btn_next,btn_pre;
     String roomid;
 
     Condition cd;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +101,8 @@ public class ChooseTImeActivity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        btn_pre=findViewById(R.id.btn_pre);
+        btn_pre.setOnClickListener(mpreClickListener);
 
         for(int i=0;i<reservenum;i++){
             JSONObject jsonOBject = null;
@@ -120,14 +124,17 @@ public class ChooseTImeActivity extends Activity {
         adapter = new TimeBlockAdapter(time, this,selectedtime);
         rvTimeBlock.setAdapter(adapter);
 
+
+        intent = new Intent(this, PutPurposeActivity.class);
         btn_next=findViewById(R.id.btn_reserveend);
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String str = adapter.getSel();
-
+                if(str==null){
+                    Toast.makeText(getApplicationContext(),"예약시간을 선택해 주세요",Toast.LENGTH_SHORT).show();
+                    return;}
                 cd = Condition.getInstance();
-
                 Calendar c = Calendar.getInstance();
                 c.set(2018,cd.getMonth(),cd.getDay(),(int)Integer.parseInt(str),0);
                 Date date = c.getTime();
@@ -216,10 +223,16 @@ public class ChooseTImeActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            startActivity(intent);
             Log.e("ads",result);
-            //startActivity(intent);
+
         }
 
     }
+    View.OnClickListener mpreClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish();
+        }};
 
 }
