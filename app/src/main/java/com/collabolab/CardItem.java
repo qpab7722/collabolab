@@ -3,16 +3,16 @@ package com.collabolab;
 
 public class CardItem {
 
-    private int mTextResource;
+    private int mTypeResource;
     private int mTitleResource;
 
     public CardItem(int title, int text) {
         mTitleResource = title;
-        mTextResource = text;
+        mTypeResource = text;
     }
 
     public int getText() {
-        return mTextResource;
+        return mTypeResource;
     }
 
     public int getTitle() {
