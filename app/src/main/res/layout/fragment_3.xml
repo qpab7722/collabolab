@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_info"
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:src="@drawable/room3"
+        android:scaleType="fitStart"/>
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_below="@id/iv_info"
+        android:layout_marginBottom="10dp"
+        android:text="토의 라운지"
+        android:textColor="@color/black"
+        android:textSize="28sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_info"
+        android:layout_marginStart="30dp"
+        android:text="활발한 토론과 의견 교류를 위한\n학습의 장"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/show3"
+        android:scaleType="fitCenter"/>
+
+</RelativeLayout>
