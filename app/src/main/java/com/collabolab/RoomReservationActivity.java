@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -48,6 +49,7 @@ public class RoomReservationActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_roomreservation);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
@@ -88,7 +90,7 @@ public class RoomReservationActivity extends AppCompatActivity  {
         mViewPager.setPageTransformer(false, mFragmentCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(3);
 
-        intent = new Intent(this, SetTypeActivity.class);
+        intent = new Intent(this, ChooseTImeActivity.class);
     }
 
     View.OnClickListener mClickListener = new View.OnClickListener() {
@@ -96,7 +98,7 @@ public class RoomReservationActivity extends AppCompatActivity  {
         public void onClick(View v) {
             CardItem item = mCardAdapter.getCardItemAt(mViewPager.getCurrentItem());
             //new JSONTask2().execute("http://52.78.178.50/api/android/search/room_search");
-            //startActivity(intent);
+            startActivity(intent);
         }};
 
     public static float dpToPixels(int dp, Context context) {
