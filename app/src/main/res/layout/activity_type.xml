@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_sel1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#447700"/>
+    <TextView
+        android:id="@+id/tv_sel2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#448800"/>
+    <TextView
+        android:id="@+id/tv_sel3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#449900"/>
+
+
+    <Button
+        android:id="@+id/btn_typeopen"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="개방형"/>
+    <Button
+        android:id="@+id/btn_typeclosed"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="방음형"/>
+    <Button
+        android:id="@+id/btn_typecom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="컴퓨터"/>
+    <Button
+        android:id="@+id/btn_typeboard"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="화이트보드"/>
+    <Button
+        android:id="@+id/btn_typebeam"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="빔 프로젝터"/>
+    <Button
+        android:id="@+id/btn_typefilm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="촬영장비"/>
+
+
+    <Button
+        android:id="@+id/btn_typend"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
