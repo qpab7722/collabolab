@@ -8,5 +8,5 @@
     <color name="transparent">#00000000</color>
     <color name="mainColor">#FF4010</color>
     <color name="gray">#CACAD8</color>
-    <color name="reserved">#BAB6FB</color>
+    <color name="reserve">#BAB6FB</color>
 </resources>
