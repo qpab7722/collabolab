@@ -7,5 +7,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/mainColor</item>
     </style>
+    <style name="PopUpMenu">
+        <item name="android:itemBackground">@color/white</item>
+        <item
+    </style>
 
 </resources>
