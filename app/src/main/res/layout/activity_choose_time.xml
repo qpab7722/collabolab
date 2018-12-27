@@ -25,12 +25,14 @@
     </android.support.v7.widget.RecyclerView>
 
     <Button
+        android:id="@+id/btn_pre"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/left"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"/>
     <Button
+        android:id="@+id/btn_next"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/right"

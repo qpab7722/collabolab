@@ -8,13 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.Toast;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SetPeopleActivity extends Activity {
 
 
-    Button btn_people0,btn_people1,btn_people2;
+    CircleImageView btn_people0,btn_people1,btn_people2;
     Intent intent;
 
     @Override

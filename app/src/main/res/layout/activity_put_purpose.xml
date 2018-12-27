@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PutPurposeActivity"
+    android:background="@color/white"
+    android:padding="20dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="컴퓨터실\n302호"
+        android:textSize="40sp"
+        android:lineHeight="50sp"
+        android:textColor="@color/mainColor"/>
+
+    <TextView
+        android:id="@+id/tv_purpose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용목적"
+        android:textColor="@color/mainColor"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"/>
+    <EditText
+        android:id="@+id/et_purpose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_purpose"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/mainColor"/>
+    
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_next"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:foreground="@drawable/right"
+        android:layout_alignTop="@+id/tv_purpose"
+        android:layout_alignParentEnd="true"
+        />
+</RelativeLayout>

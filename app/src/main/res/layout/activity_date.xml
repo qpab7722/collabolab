@@ -7,28 +7,50 @@
     android:background="@color/mainBack"
     >
     <RelativeLayout
+        android:id="@+id/rl_menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/txt_main"
+            android:scaleType="fitCenter"/>
+        <ImageButton
+            android:id="@+id/ib_menu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_menu"/>
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/rl_top"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/white">
+        android:layout_height="90dp"
+        android:layout_below="@+id/rl_menu"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
         <TextView
             android:id="@+id/tv_text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
             android:textColor="#000000"
             android:text="선택 사항"
-            android:textSize="15dp"
-            android:layout_marginLeft="30dp"
-            android:layout_centerVertical="true"/>
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_datetag"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:background="@drawable/shape"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@+id/tv_text"
+            android:layout_alignTop="@+id/tv_text"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/tv_text"
             android:textColor="#000000"
             android:text="시간"
             android:padding="5dp"/>
@@ -48,7 +70,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:text="예약 날짜와 시간을 입력해주세요."
+            android:text="예약 날짜와 시각을\n입력해주세요."
             android:textSize="25dp"
             android:layout_marginLeft="30dp"
             android:layout_centerVertical="true"
@@ -132,7 +154,7 @@
             android:background="@color/white"
             android:layout_toEndOf="@+id/wv_day"
             android:layout_marginStart="10dp"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center"
             android:text="금요일"
@@ -145,7 +167,7 @@
             android:layout_toEndOf="@+id/wv_day"
             android:layout_marginStart="10dp"
             android:layout_below="@+id/tv_weekday"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="#777777"
             android:gravity="center"
             android:text="Friday"/>
@@ -164,6 +186,6 @@
             android:background="@drawable/right"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_margin="5dp"/>
+            android:layout_margin="10dp"/>
     </RelativeLayout>
 </RelativeLayout>
