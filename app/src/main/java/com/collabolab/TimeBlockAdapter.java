@@ -9,11 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class TimeBlockAdapter extends RecyclerView.Adapter<TimeBlockAdapter.ViewHolder> {
     List<Integer> listTime;
     Context context;
+    List<Integer> selectedtime;
+
+    String sel;
 
     public static class ViewHolder extends  RecyclerView.ViewHolder {
         TextView tvTime;
@@ -26,9 +30,10 @@ public class TimeBlockAdapter extends RecyclerView.Adapter<TimeBlockAdapter.View
         }
     }
 
-    public TimeBlockAdapter(List<Integer> time, Context context) {
+    public TimeBlockAdapter(List<Integer> time, Context context,List<Integer> seltime) {
         this.context = context;
         this.listTime = time;
+        selectedtime = seltime;
     }
 
     @Override
@@ -40,10 +45,21 @@ public class TimeBlockAdapter extends RecyclerView.Adapter<TimeBlockAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         viewHolder.tvTime.setText(String.valueOf(listTime.get(position)));
+        for(Iterator<Integer> it = selectedtime.iterator(); it.hasNext();){
+            Integer val =it.next();
+            if(val.equals(position))
+                viewHolder.btnBlock.setEnabled(false);
+        }
+        viewHolder.btnBlock.setTag(position);
         viewHolder.btnBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if((sel==null)||sel.equals(view.getTag().toString())){
                 ((Button)view).setSelected(!(((Button)view).isSelected()));
+                if(((Button)view).isSelected())sel=view.getTag().toString();
+                else  sel=null;
+                }
+
             }
         });
     }
@@ -61,5 +77,9 @@ public class TimeBlockAdapter extends RecyclerView.Adapter<TimeBlockAdapter.View
     @Override
     public int getItemViewType(int position) {
         return position;
+    }
+
+    public String getSel() {
+        return sel;
     }
 }

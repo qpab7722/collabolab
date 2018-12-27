@@ -30,11 +30,14 @@ public class SetDateActivity extends Activity {
 
     TextView tvWeekday,tvWeekdayEng;
     Spinner spinTime;
+    Condition cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date);
+
+        cd = Condition.getInstance();
 
         listMonth = new ArrayList<>();
         listMonth.add(new TextDrawable(String.valueOf(12)));
@@ -130,6 +133,16 @@ public class SetDateActivity extends Activity {
 
                 intent = new Intent(getApplicationContext(), SetPeopleActivity.class);
                 intent.putExtra("date",data);
+                cd.setStartDate(data);
+
+                c.set(2018,month-1,day,(int)Integer.valueOf(spinTime.getSelectedItem().toString().replace("시",""))+1,0);
+                date = c.getTime();
+                simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:00:00");
+                data = simpleDateFormat.format(date);
+                cd.setEndDate(data);
+                cd.setDay(day);
+                cd.setMonth(month-1);
+
                 startActivity(intent);
                 Log.d(TAG, "date: "+ data);
             }

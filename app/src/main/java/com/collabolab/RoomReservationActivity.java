@@ -2,6 +2,7 @@ package com.collabolab;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,21 @@ import android.widget.Button;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import java.net.HttpURLConnection;
 
 public class RoomReservationActivity extends AppCompatActivity  {
 
@@ -30,6 +46,9 @@ public class RoomReservationActivity extends AppCompatActivity  {
     JSONArray objArr;
     Button btn_end;
     Intent intent;
+
+    String roomid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +78,7 @@ public class RoomReservationActivity extends AppCompatActivity  {
             try {
                 jsonOBject = objArr.getJSONObject(i);
                 String name =jsonOBject.getString("name");
-                String id =jsonOBject.getString("name");
+                String id =jsonOBject.getString("roomId");
                 Log.e("ㅇㅇㅇㅇㅇㅇ",objArr.length()+"d"+name);
                 mCardAdapter.addCardItem(new CardItem(name, id));
             } catch (JSONException e) {
@@ -83,15 +102,17 @@ public class RoomReservationActivity extends AppCompatActivity  {
         @Override
         public void onClick(View v) {
             CardItem item = mCardAdapter.getCardItemAt(mViewPager.getCurrentItem());
-            //new JSONTask2().execute("http://52.78.178.50/api/android/search/room_search");
-            startActivity(intent);
+            roomid = item.getText();
+            Log.e("시간표 줘라",roomid);
+            new JSONTask2().execute("http://52.78.178.50/api/common/reserv_check");
+            //startActivity(intent);
         }};
 
     public static float dpToPixels(int dp, Context context) {
         return dp * (context.getResources().getDisplayMetrics().density);
     }
 
-    /*
+
     public class JSONTask2 extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -99,13 +120,8 @@ public class RoomReservationActivity extends AppCompatActivity  {
                 Log.e("ㅇㅇㅇㅇㅇㅇ","돌아간다`할아부지");
                 //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("capacity", capacity);
-                // String[] test= new String[2];
-                selectedType.add("1");
-                selectedType.add("0");
-                jsonObject.accumulate("itemList", new JSONArray(selectedType) );//new JSONArray(selectedType)
-                jsonObject.accumulate("startDate", "2018-12-27 20:00:00");
-                jsonObject.accumulate("endDate", "2018-12-27 21:00:00");
+                jsonObject.accumulate("roomId", roomid);
+                jsonObject.accumulate("offsetDate", "2018-12-27");
 
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
@@ -163,10 +179,11 @@ public class RoomReservationActivity extends AppCompatActivity  {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            Log.e("ads",result);
             intent.putExtra("roomresult",result);
             startActivity(intent);
         }
 
     }
-    */
+
 }
