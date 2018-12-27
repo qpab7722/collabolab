@@ -3,23 +3,15 @@ package com.collabolab;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Path;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Calendar;
-
-public class SetPeopleActivity extends AppCompatActivity {
+public class SetPeopleActivity extends Activity {
 
 
     Button btn_people0,btn_people1,btn_people2;
@@ -29,7 +21,6 @@ public class SetPeopleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_people);
-        getSupportActionBar().hide();
 
         btn_people0=findViewById(R.id.btn_35);
         ani(btn_people0,80f,80f);

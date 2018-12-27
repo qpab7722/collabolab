@@ -1,5 +1,6 @@
 package com.collabolab;
 
+import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -8,13 +9,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +31,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SetTypeActivity extends AppCompatActivity {
+public class SetTypeActivity extends Activity {
 
 
     Button btn_open,btn_com,btn_board,btn_beam,btn_film, btn_end;
@@ -50,7 +48,6 @@ public class SetTypeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
-        getSupportActionBar().hide();
         selectedType=new ArrayList<String>();
 
         tv_sel1 = findViewById(R.id.tv_typetag1);

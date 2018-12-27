@@ -1,9 +1,9 @@
 package com.collabolab;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class SetDateActivity extends AppCompatActivity {
+public class SetDateActivity extends Activity {
     private static final String TAG = SetDateActivity.class.getSimpleName();
 
     Intent intent;
@@ -35,7 +35,6 @@ public class SetDateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date);
-        getSupportActionBar().hide();
 
         listMonth = new ArrayList<>();
         listMonth.add(new TextDrawable(String.valueOf(12)));
