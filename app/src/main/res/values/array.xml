@@ -7,6 +7,7 @@
         <item>목요일</item>
         <item>금요일</item>
         <item>토요일</item>
+        <item>일요일</item>
     </array>
     <array name="weekday_eng">
         <item>Monday</item>
@@ -15,6 +16,7 @@
         <item>Thursday</item>
         <item>Friday</item>
         <item>Saturday</item>
+        <item>Sunday</item>
     </array>
     <array name="time">
         <item>09시</item>
