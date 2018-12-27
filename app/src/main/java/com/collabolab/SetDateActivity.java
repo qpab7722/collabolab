@@ -74,8 +74,8 @@ public class SetDateActivity extends AppCompatActivity {
                         wvDay.setAdapter(waDay);
                         break;
                 }
-                month = Integer.valueOf(listMonth.get(wvMonth.getSelectedPosition()).getText());
-                day = Integer.valueOf(listDay.get(position).getText());
+                month = Integer.valueOf(listMonth.get(position).getText());
+                day = Integer.valueOf(listDay.get(wvDay.getSelectedPosition()).getText());
                 Calendar c = Calendar.getInstance();
                 c.set(2018, month-1, day);
                 int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
