@@ -55,6 +55,7 @@ public class RoomReservationActivity extends AppCompatActivity  {
     TextView info;
 
     TextView tv_date;
+    TextView tv_cap,tv_item;
 
     Condition cd;
 
@@ -100,10 +101,30 @@ public class RoomReservationActivity extends AppCompatActivity  {
 
         btn_end=findViewById(R.id.btn_cardsel);
         btn_end.setOnClickListener(mClickListener);
-
+        //tv_date.setText(cd.get);
         tv_date=findViewById(R.id.tv_date);
         tv_date.setPaintFlags(tv_date.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        //tv_date.setText(cd.get);
+        tv_date.setText(cd.getStartDate());
+
+        tv_cap=findViewById(R.id.tv_cap);
+        tv_cap.setPaintFlags(tv_cap.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tv_cap.setText(cd.getCapacity());
+
+        tv_item=findViewById(R.id.tv_item);
+        tv_item.setPaintFlags(tv_item.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        String itemstr="";
+        String tmp="";
+        for(int i=0;i<cd.getItemList().size();i++) {
+            switch (cd.getItemList().get(i)){
+                case "0": tmp="컴퓨터";  break;
+                case "1": tmp="화이트 보드";  break;
+                case "2": tmp="개방형";  break;
+                case "3": tmp="빔 프로젝터";  break;
+                case "4": tmp="스튜디오";  break;
+            }
+            itemstr += tmp+ ",";
+        }
+        tv_item.setText(itemstr);
 
         //json데이터 분해~~~
         Intent gintent = getIntent();
@@ -125,8 +146,8 @@ public class RoomReservationActivity extends AppCompatActivity  {
                 jsonOBject = objArr.getJSONObject(i);
                 String name =jsonOBject.getString("name");
                 String id =jsonOBject.getString("roomId");
-                Log.e("ㅇㅇㅇㅇㅇㅇ",objArr.length()+"d"+name);
-                mCardAdapter.addCardItem(new CardItem(name, id));
+                Log.e("ㅇㅇㅇㅇㅇㅇ",objArr.length()+"d"+name+"idddddddddd"+id);
+                mCardAdapter.addCardItem(new CardItem(name,id));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -155,7 +176,8 @@ public class RoomReservationActivity extends AppCompatActivity  {
         @Override
         public void onClick(View v) {
             CardItem item = mCardAdapter.getCardItemAt(mViewPager.getCurrentItem());
-            roomid = item.getText();
+            Log.e("current itme",""+mViewPager.getCurrentItem());
+            roomid = item.getText().toString();
             Log.e("시간표 줘라",roomid);
             new JSONTask2().execute("http://52.78.178.50/api/common/reserv_check");
             //startActivity(intent);
@@ -174,7 +196,7 @@ public class RoomReservationActivity extends AppCompatActivity  {
                 //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("roomId", roomid);
-                jsonObject.accumulate("offsetDate", "2018-12-27");
+                jsonObject.accumulate("offsetDate", "2018-12-27");//날짜 현재 날짜로
 
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
