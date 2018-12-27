@@ -9,7 +9,6 @@
     </style>
     <style name="PopUpMenu">
         <item name="android:itemBackground">@color/white</item>
-        <item
     </style>
 
 </resources>
