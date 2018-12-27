@@ -14,6 +14,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -43,11 +44,13 @@ public class SetPeopleActivity extends AppCompatActivity {
 
 
         intent = new Intent(this, SetTypeActivity.class);
+
     }
 
     View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            intent.putExtra("capacity",v.getTag().toString());
             startActivity(intent);
             Toast.makeText(getApplicationContext(),""+v.getTag().toString(),Toast.LENGTH_SHORT).show();
         }};

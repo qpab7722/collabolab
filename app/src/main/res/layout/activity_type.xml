@@ -38,6 +38,41 @@
             android:layout_toRightOf="@+id/tv_datetag"
             android:text="사용인원"
             android:padding="5dp"/>
+        <TextView
+            android:id="@+id/tv_typetag1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/shape"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/tv_text"
+            android:text="사용기기 1"
+            android:padding="5dp"/>
+        <TextView
+            android:id="@+id/tv_typetag2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/shape"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/tv_text"
+            android:text="사용기기 2"
+            android:padding="5dp"
+            android:layout_toRightOf="@+id/tv_typetag1"/>
+        <TextView
+            android:id="@+id/tv_typetag3"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/shape"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/tv_text"
+            android:text="사용기기 3"
+            android:padding="5dp"
+            android:layout_toRightOf="@+id/tv_typetag2"/>
     </RelativeLayout>
 
     <RelativeLayout
