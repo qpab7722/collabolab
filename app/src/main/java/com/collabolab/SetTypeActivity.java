@@ -31,24 +31,36 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class SetTypeActivity extends Activity {
 
 
-    Button btn_open,btn_com,btn_board,btn_beam,btn_film, btn_end;
-    TextView tv_peopletag;
+    Button btn_open,btn_com,btn_board,btn_beam,btn_film;
+    TextView tv_peopletag,tv_datetag;
     TextView tv_sel1,tv_sel2,tv_sel3;
     ArrayList<String> selectedType;
+
+    //ArrayList<String> selectedTypeTag;
 
      String capacity;
      String[] itemList;
 
      Intent intent;
+    Condition cd;
+
+    Button btn_next,btn_pre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
+        cd = Condition.getInstance();
+
+        cd.setItemList(null);
         selectedType=new ArrayList<String>();
+        //selectedTypeTag=new ArrayList<String>();
+
 
         tv_sel1 = findViewById(R.id.tv_typetag1);
         tv_sel2 = findViewById(R.id.tv_typetag2);
@@ -69,12 +81,11 @@ public class SetTypeActivity extends Activity {
         btn_beam.setOnClickListener(mClickListener);
         btn_film.setOnClickListener(mClickListener);
 
-        btn_end= findViewById(R.id.btn_typend);
-        btn_end.setOnClickListener(mendClickListener);
+        tv_datetag=findViewById(R.id.tv_datetag);
+        tv_datetag.setText(cd.getStartDate());
 
         tv_peopletag=findViewById(R.id.tv_peopletag);
-        Intent gintent = getIntent();
-        capacity=  gintent.getStringExtra("capacity").toString();
+        capacity=  cd.getCapacity();
         switch (capacity){
             case "0":
                 tv_peopletag.setText(" 3~5명 ");
@@ -87,14 +98,20 @@ public class SetTypeActivity extends Activity {
                 break;
         }
 
+        btn_next=findViewById(R.id.btn_next);
+        btn_next.setOnClickListener(mnextClickListener);
+
         intent = new Intent(this, RoomReservationActivity.class);
+
+        btn_pre=findViewById(R.id.btn_pre);
+        btn_pre.setOnClickListener(mpreClickListener);
     }
 
     View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View button) {
             Button b = (Button)button;
-            String text = b.getText().toString();
+            String text = b.getTag().toString();
             if(button.isSelected()){
                 //삭제
                 for(Iterator<String> it = selectedType.iterator();it.hasNext();){
@@ -120,34 +137,79 @@ public class SetTypeActivity extends Activity {
         tv_sel3.setVisibility(View.INVISIBLE);
         if(selectedType.size()>0) {
             tv_sel1.setVisibility(View.VISIBLE);
-            tv_sel1.setText(selectedType.get(0));
+            switch (selectedType.get(0)){
+                case "0":
+                    tv_sel1.setText("컴퓨터");
+                    break;
+                case "1":
+                    tv_sel1.setText("화이트보드");
+                    break;
+                case "2":
+                    tv_sel1.setText("개방형");
+                    break;
+                case "3":
+                    tv_sel1.setText("빔 프로젝터");
+                    break;
+                case "4":
+                    tv_sel1.setText("스튜디오");
+                    break;
+            }
         }
         if(selectedType.size()>1){
             tv_sel2.setVisibility(View.VISIBLE);
-            tv_sel2.setText(selectedType.get(1));
+            switch (selectedType.get(1)){
+                case "0":
+                    tv_sel2.setText("컴퓨터");
+                    break;
+                case "1":
+                    tv_sel2.setText("화이트보드");
+                    break;
+                case "2":
+                    tv_sel2.setText("개방형");
+                    break;
+                case "3":
+                    tv_sel2.setText("빔 프로젝터");
+                    break;
+                case "4":
+                    tv_sel2.setText("스튜디오");
+                    break;
+            }
         }
         if(selectedType.size()>2){
             tv_sel3.setVisibility(View.VISIBLE);
-            tv_sel3.setText(selectedType.get(2));
+            switch (selectedType.get(2)){
+                case "0":
+                    tv_sel3.setText("컴퓨터");
+                    break;
+                case "1":
+                    tv_sel3.setText("화이트보드");
+                    break;
+                case "2":
+                    tv_sel3.setText("개방형");
+                    break;
+                case "3":
+                    tv_sel3.setText("빔 프로젝터");
+                    break;
+                case "4":
+                    tv_sel3.setText("스튜디오");
+                    break;
+            }
         }
     }
 
-    View.OnClickListener mendClickListener = new View.OnClickListener() {
+    View.OnClickListener mnextClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View button) {
-            itemList=new String[selectedType.size()];
-            if(selectedType.size()>0)
-                itemList[0]=selectedType.get(0);
-            if(selectedType.size()>1)
-                itemList[1]=selectedType.get(1);
-            if(selectedType.size()>2)
-                itemList[2]=selectedType.get(2);
-            for(int i =0 ;i<selectedType.size();i++)
-                Log.e("ㅇㅇㅇㅇㅇㅇ","리쮸튜"+itemList[i]);
-
+        public void onClick(View v) {
+            cd.setItemList(selectedType);
+            Log.e("sdaaaaaaaaaa",cd.getCapacity() + cd.getStartDate()+ cd.getEndDate() +cd.getItemList().size());
             new JSONTask().execute("http://52.78.178.50/api/android/search/room_search");
-        }
-    };
+        }};
+    View.OnClickListener mpreClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish();
+        }};
+
     public class JSONTask extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -156,13 +218,10 @@ public class SetTypeActivity extends Activity {
                 Log.e("ㅇㅇㅇㅇㅇㅇ","돌아간다`할아부지");
                 //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("capacity", capacity);
-               // String[] test= new String[2];
-                selectedType.add("1");
-                selectedType.add("0");
-                jsonObject.accumulate("itemList", new JSONArray(selectedType) );//new JSONArray(selectedType)
-                jsonObject.accumulate("startDate", "2018-12-27 20:00:00");
-                jsonObject.accumulate("endDate", "2018-12-27 21:00:00");
+                jsonObject.accumulate("capacity", cd.getCapacity());
+                jsonObject.accumulate("itemList", new JSONArray(cd.getItemList()));//new JSONArray(selectedType)
+                jsonObject.accumulate("startDate", cd.getStartDate());
+                jsonObject.accumulate("endDate", cd.getEndDate());
 
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
