@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/mainBack">
 
 
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="220dp">
+        android:layout_height="220dp"
+        android:background="@color/white">
         <TextView
             android:id="@+id/tv_text"
             android:layout_width="wrap_content"
