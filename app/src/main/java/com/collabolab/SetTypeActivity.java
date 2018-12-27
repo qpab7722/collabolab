@@ -123,10 +123,10 @@ public class SetTypeActivity extends Activity {
                 tv_peopletag.setText(" 3~5명 ");
                 break;
             case "1":
-                tv_peopletag.setText(" 6~10명 ");
+                tv_peopletag.setText(" 5~10명 ");
                 break;
             case "2":
-                tv_peopletag.setText(" 11명이상 ");
+                tv_peopletag.setText(" 10명이상 ");
                 break;
         }
 
@@ -190,19 +190,19 @@ public class SetTypeActivity extends Activity {
         if(selectedType.size()>0) {
             tv_sel1.setVisibility(View.VISIBLE);
             switch (selectedType.get(0)){
-                case "0":
+                case "1":
                     tv_sel1.setText("컴퓨터");
                     break;
-                case "1":
+                case "3":
                     tv_sel1.setText("화이트보드");
                     break;
                 case "2":
                     tv_sel1.setText("개방형");
                     break;
-                case "3":
+                case "4":
                     tv_sel1.setText("빔 프로젝터");
                     break;
-                case "4":
+                case "5":
                     tv_sel1.setText("스튜디오");
                     break;
             }
@@ -210,19 +210,19 @@ public class SetTypeActivity extends Activity {
         if(selectedType.size()>1){
             tv_sel2.setVisibility(View.VISIBLE);
             switch (selectedType.get(1)){
-                case "0":
+                case "1":
                     tv_sel2.setText("컴퓨터");
                     break;
-                case "1":
+                case "3":
                     tv_sel2.setText("화이트보드");
                     break;
                 case "2":
                     tv_sel2.setText("개방형");
                     break;
-                case "3":
+                case "4":
                     tv_sel2.setText("빔 프로젝터");
                     break;
-                case "4":
+                case "5":
                     tv_sel2.setText("스튜디오");
                     break;
             }
@@ -230,19 +230,19 @@ public class SetTypeActivity extends Activity {
         if(selectedType.size()>2){
             tv_sel3.setVisibility(View.VISIBLE);
             switch (selectedType.get(2)){
-                case "0":
+                case "1":
                     tv_sel3.setText("컴퓨터");
                     break;
-                case "1":
+                case "3":
                     tv_sel3.setText("화이트보드");
                     break;
                 case "2":
                     tv_sel3.setText("개방형");
                     break;
-                case "3":
+                case "4":
                     tv_sel3.setText("빔 프로젝터");
                     break;
-                case "4":
+                case "5":
                     tv_sel3.setText("스튜디오");
                     break;
             }

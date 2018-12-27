@@ -118,10 +118,10 @@ public class SetPeopleActivity extends Activity {
                     tv_peopletag.setText(" 3~5명 ");
                     break;
                 case "1":
-                    tv_peopletag.setText(" 6~10명 ");
+                    tv_peopletag.setText(" 5~10명 ");
                     break;
                 case "2":
-                    tv_peopletag.setText(" 11명이상 ");
+                    tv_peopletag.setText(" 10명이상 ");
                     break;
             }
             cd.setCapacity(v.getTag().toString());
