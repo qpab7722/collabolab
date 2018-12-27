@@ -98,6 +98,7 @@ public class SetPeopleActivity extends Activity {
     View.OnClickListener mnextClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if(cd.getCapacity()!=null)
             startActivity(intent);
         }};
     View.OnClickListener mpreClickListener = new View.OnClickListener() {
