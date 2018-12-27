@@ -136,11 +136,11 @@
             android:layout_above="@+id/rl_typebeam"
             android:layout_toStartOf="@+id/rl_typebeam"
             android:layout_marginEnd="-40dp">
-            <de.hdodenhof.circleimageview.CircleImageView
+            <Button
                 android:id="@+id/btn_typecom"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/com_off"
+                android:background="@drawable/com_off"
                 android:scaleX="1.1"
                 android:scaleY="1.1"/>
             <TextView
@@ -160,11 +160,11 @@
         android:layout_above="@+id/rl_typebeam"
         android:layout_toEndOf="@+id/rl_typebeam"
         android:layout_marginStart="-40dp">
-        <de.hdodenhof.circleimageview.CircleImageView
+        <Button
             android:id="@+id/btn_typeboard"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/board_off"
+            android:background="@drawable/board_off"
             android:scaleX="1.2"
             android:scaleY="1.2"/>
         <TextView
@@ -184,11 +184,11 @@
             android:layout_alignTop="@+id/rl_typebeam"
             android:layout_toStartOf="@+id/rl_typebeam"
             android:layout_marginEnd="10dp">
-            <de.hdodenhof.circleimageview.CircleImageView
+            <Button
                 android:id="@+id/btn_typeopen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/open_off"
+                android:background="@drawable/open_off"
                 android:scaleX="1.2"
                 android:scaleY="1.2"/>
             <TextView
@@ -208,11 +208,11 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="80dp"
             android:layout_centerHorizontal="true">
-            <de.hdodenhof.circleimageview.CircleImageView
+            <Button
                 android:id="@+id/btn_typebeam"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/beam_off"
+                android:background="@drawable/beam_off"
                 android:scaleX="1.3"
                 android:scaleY="1.3"/>
             <TextView
@@ -232,11 +232,11 @@
             android:layout_alignTop="@+id/rl_typebeam"
             android:layout_toEndOf="@+id/rl_typebeam"
             android:layout_marginStart="10dp">
-            <de.hdodenhof.circleimageview.CircleImageView
+            <Button
                 android:id="@+id/btn_typefilm"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/camera_off"
+                android:background="@drawable/camera_off"
                 android:scaleX="1.3"
                 android:scaleY="1.3"/>
             <TextView
