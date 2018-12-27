@@ -140,6 +140,8 @@ public class SetDateActivity extends Activity {
                 simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:00:00");
                 data = simpleDateFormat.format(date);
                 cd.setEndDate(data);
+                cd.setDay(day);
+                cd.setMonth(month-1);
 
                 startActivity(intent);
                 Log.d(TAG, "date: "+ data);

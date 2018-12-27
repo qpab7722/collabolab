@@ -1,6 +1,7 @@
 package com.collabolab;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Condition {
 
@@ -8,6 +9,9 @@ public class Condition {
     ArrayList<String> itemList;
     String startDate;
     String endDate;
+
+
+    int month,day;
 
     private Condition() {
     }
@@ -42,5 +46,21 @@ public class Condition {
 
     public void setCapacity(String capacity) {
         this.capacity = capacity;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getDay() {
+        return day;
     }
 }
