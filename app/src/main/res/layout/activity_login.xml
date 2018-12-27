@@ -10,12 +10,13 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:weightSum="100">
+    android:weightSum="100"
+    android:background="@color/mainBack">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="30"/>
+        android:layout_weight="24"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,26 +24,47 @@
         android:layout_height="0dp"
         android:layout_weight="30"
         android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:src="@drawable/icon_main" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_marginTop="-20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/txt_main"/>
 
     <EditText
         android:id="@+id/et_id"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:inputType="textPassword"
-        android:hint="학번"/>
+        android:padding="8dp"
+        android:background="@color/white"
+        android:inputType="number"
+        android:hint="학번"
+        android:textSize="16sp"/>
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:inputType="number"
-        android:hint="비밀번호"/>
+        android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:inputType="textPassword"
+        android:hint="비밀번호"
+        android:textSize="16sp"/>
 
     <Button
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"/>
+        android:layout_weight="8"
+        android:layout_marginTop="10dp"
+        android:background="@color/mainGray"
+        android:text="로그인"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
 
 </LinearLayout>
