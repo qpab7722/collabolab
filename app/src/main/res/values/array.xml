@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="weekday" >
+        <item>월요일</item>
+        <item>화요일</item>
+        <item>수요일</item>
+        <item>목요일</item>
+        <item>금요일</item>
+        <item>토요일</item>
+    </array>
+    <array name="weekday_eng">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </array>
+    <array name="time">
+        <item>09시</item>
+        <item>10시</item>
+        <item>11시</item>
+        <item>12시</item>
+        <item>13시</item>
+        <item>14시</item>
+        <item>15시</item>
+        <item>16시</item>
+        <item>17시</item>
+    </array>
+</resources>

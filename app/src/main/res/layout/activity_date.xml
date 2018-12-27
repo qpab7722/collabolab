@@ -1,25 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
 
-    <CalendarView
-        android:id="@+id/cv_cal"
+    <RelativeLayout
+        android:id="@+id/rl_center"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+    </RelativeLayout>
+    <com.lukedeighton.wheelview.WheelView
+        android:id="@+id/wv_day"
+        android:layout_width="180dp"
+        android:layout_height="360dp"
+        android:layout_centerVertical="true"
+        app:wheelDrawable="@drawable/wheelview"
+        app:rotatableWheelDrawable="true"
+        app:selectionAngle="0.0"
+        app:wheelPosition="left"
+        app:repeatItems="true"
+        app:wheelItemCount="31"
+        app:wheelRadius="180dp"
+        app:wheelPadding="10dp"
+        app:wheelItemRadius="30dp"
+        app:emptyItemColor="@color/white"
+        app:selectionColor="@color/white" />
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </CalendarView>
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/wv_day"
+        android:layout_alignTop="@+id/wv_day"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="10dp"
+        android:text="일"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+    <com.lukedeighton.wheelview.WheelView
+        android:id="@+id/wv_month"
+        android:layout_width="110dp"
+        android:layout_height="220dp"
+        android:layout_alignTop="@+id/wv_day"
+        android:layout_marginTop="65dp"
+        app:wheelDrawable="@drawable/wheelview"
+        app:rotatableWheelDrawable="true"
+        app:selectionAngle="0.0"
+        app:wheelOffsetY="0dp"
+        app:wheelPosition="left"
+        app:repeatItems="true"
+        app:wheelItemCount="3"
+        app:wheelRadius="110dp"
+        app:wheelPadding="10dp"
+        app:wheelItemRadius="30dp"
+        app:emptyItemColor="@color/white"
+        app:selectionColor="@color/white" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/wv_month"
+        android:layout_alignTop="@+id/wv_month"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="10dp"
+        android:text="월"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp" />
 
-    <TimePicker
-        android:id="@+id/tp_time"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:timePickerMode="spinner">
-    </TimePicker>
+    <TextView
+        android:id="@+id/tv_weekday"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/rl_center"
+        android:background="@color/white"
+        android:layout_toEndOf="@+id/wv_day"
+        android:layout_marginStart="10dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="금요일"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tv_weekday_eng"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@color/transparent"
+        android:layout_toEndOf="@+id/wv_day"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/tv_weekday"
+        android:textSize="18sp"
+        android:textColor="#777777"
+        android:gravity="center"
+        android:text="Friday"/>
+    <Spinner
+        android:id="@+id/spinner_time"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/rl_center"
+        android:background="@color/white"
+        android:layout_toEndOf="@+id/tv_weekday" />
+
     <Button
-        android:id="@+id/btn_datetime"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
-</LinearLayout>
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="다음"
+        android:textStyle="bold"
+        android:textSize="24sp"/>
+
+</RelativeLayout>
