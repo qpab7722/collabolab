@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".SetPeopleActivity"></activity>
         <activity android:name=".SetTypeActivity"></activity>
-
+        <activity android:name=".RoomReservationActivity"></activity>
     </application>
 
 </manifest>
