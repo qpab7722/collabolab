@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseTImeActivity"
-    android:background="@color/reserve"
+    android:background="@color/mainBack"
     android:padding="20dp">
 
     <TextView
