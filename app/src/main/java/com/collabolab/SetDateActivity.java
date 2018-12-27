@@ -38,6 +38,8 @@ public class SetDateActivity extends Activity {
         setContentView(R.layout.activity_date);
 
         cd = Condition.getInstance();
+        cd.setStartDate(null);
+        cd.setEndDate(null);
 
         listMonth = new ArrayList<>();
         listMonth.add(new TextDrawable(String.valueOf(12)));
@@ -128,7 +130,7 @@ public class SetDateActivity extends Activity {
                 Calendar c = Calendar.getInstance();
                 c.set(2018,month-1,day,(int)Integer.valueOf(spinTime.getSelectedItem().toString().replace("시","")),0);
                 Date date = c.getTime();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:00:00");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:00:00");
                 String data = simpleDateFormat.format(date);
 
                 intent = new Intent(getApplicationContext(), SetPeopleActivity.class);
@@ -137,14 +139,13 @@ public class SetDateActivity extends Activity {
 
                 c.set(2018,month-1,day,(int)Integer.valueOf(spinTime.getSelectedItem().toString().replace("시",""))+1,0);
                 date = c.getTime();
-                simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:00:00");
+                simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:00:00");
                 data = simpleDateFormat.format(date);
                 cd.setEndDate(data);
                 cd.setDay(day);
                 cd.setMonth(month-1);
-
-                startActivity(intent);
                 Log.d(TAG, "date: "+ data);
+                startActivity(intent);
             }
         });
     }

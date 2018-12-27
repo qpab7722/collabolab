@@ -63,4 +63,12 @@ public class Condition {
     public int getDay() {
         return day;
     }
+
+    public void setItemList(ArrayList<String> itemList) {
+        this.itemList = itemList;
+    }
+
+    public ArrayList<String> getItemList() {
+        return itemList;
+    }
 }

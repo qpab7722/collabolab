@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -22,11 +24,15 @@ public class SetPeopleActivity extends Activity {
     String Date;
     Condition cd;
 
+    TextView tv_datetag,tv_peopletag;
+    Button btn_next,btn_pre;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_people);
         cd = Condition.getInstance();
+        cd.setCapacity(null);
         //get intent
         Intent gintent = getIntent();
         Log.e("dsad",cd.getStartDate()+"\n"+cd.getEndDate());
@@ -39,21 +45,48 @@ public class SetPeopleActivity extends Activity {
         btn_people2=findViewById(R.id.btn_10up);
         //ani(btn_people2,-30f,-30f);
 
+        tv_datetag=findViewById(R.id.tv_datetag);
+        tv_datetag.setText(cd.getStartDate());
+        tv_peopletag=findViewById(R.id.tv_peopletag);
+
         btn_people0.setOnClickListener(mClickListener);
         btn_people1.setOnClickListener(mClickListener);
         btn_people2.setOnClickListener(mClickListener);
 
-
+        btn_next=findViewById(R.id.btn_next);
+        btn_next.setOnClickListener(mnextClickListener);
         intent = new Intent(this, SetTypeActivity.class);
 
+        btn_pre=findViewById(R.id.btn_pre);
+        btn_pre.setOnClickListener(mpreClickListener);
     }
+
+    View.OnClickListener mnextClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(intent);
+        }};
+    View.OnClickListener mpreClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish();
+        }};
 
     View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            switch (v.getTag().toString()){
+                case "0":
+                    tv_peopletag.setText(" 3~5명 ");
+                    break;
+                case "1":
+                    tv_peopletag.setText(" 6~10명 ");
+                    break;
+                case "2":
+                    tv_peopletag.setText(" 11명이상 ");
+                    break;
+            }
             cd.setCapacity(v.getTag().toString());
-            intent.putExtra("capacity",v.getTag().toString());
-            startActivity(intent);
             Toast.makeText(getApplicationContext(),""+v.getTag().toString(),Toast.LENGTH_SHORT).show();
         }};
 
