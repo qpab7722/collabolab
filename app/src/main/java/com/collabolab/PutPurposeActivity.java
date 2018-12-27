@@ -59,6 +59,9 @@ public class PutPurposeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"예약이 완료되었습니다",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
