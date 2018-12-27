@@ -12,7 +12,7 @@
         android:layout_height="50dp">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:src="@drawable/txt_main"
             android:scaleType="fitCenter"/>
@@ -63,7 +63,10 @@
         <ImageView
             android:id="@+id/bar1"
             android:layout_width="100dp"
-            android:layout_height="60dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="30dp"
             android:src="@drawable/bar1"/>
         <TextView
             android:id="@+id/tv_info"

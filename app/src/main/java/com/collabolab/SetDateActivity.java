@@ -128,7 +128,7 @@ public class SetDateActivity extends Activity {
                 Calendar c = Calendar.getInstance();
                 c.set(2018,month-1,day,(int)Integer.valueOf(spinTime.getSelectedItem().toString().replace("시","")),0);
                 Date date = c.getTime();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:00:00");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:00:00");
                 String data = simpleDateFormat.format(date);
 
                 intent = new Intent(getApplicationContext(), SetPeopleActivity.class);
@@ -137,7 +137,7 @@ public class SetDateActivity extends Activity {
 
                 c.set(2018,month-1,day,(int)Integer.valueOf(spinTime.getSelectedItem().toString().replace("시",""))+1,0);
                 date = c.getTime();
-                simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:00:00");
+                simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:00:00");
                 data = simpleDateFormat.format(date);
                 cd.setEndDate(data);
                 cd.setDay(day);
