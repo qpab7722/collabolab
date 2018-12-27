@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -214,15 +215,12 @@ public class SetTypeActivity extends Activity {
                 e.printStackTrace();
             }
             return null;
-
         }
-
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            btn_end.setText(result);//서버로 부터 받은 값을 출력해주는 부
-            Log.e("ㅇㅇㅇㅇㅇㅇ",result);
+            intent.putExtra("roomresult",result);
             startActivity(intent);
         }
 

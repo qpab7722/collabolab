@@ -3,19 +3,19 @@ package com.collabolab;
 
 public class CardItem {
 
-    private int mTypeResource;
-    private int mTitleResource;
+    private String id;
+    private String mTitleResource;
 
-    public CardItem(int title, int text) {
+    public CardItem(String title, String text) {
         mTitleResource = title;
-        mTypeResource = text;
+        id = text;
     }
 
-    public int getText() {
-        return mTypeResource;
+    public String getText() {
+        return id;
     }
 
-    public int getTitle() {
+    public String getTitle() {
         return mTitleResource;
     }
 }

@@ -6,10 +6,12 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
-    <color name="gray">#CACAD8</color>
-    <color name="reserve">#BAB6FB</color>
+
+
     <color name="mainColor">#5446f5</color>
     <color name="mainGray">#cacad8</color>
     <color name="mainAcc">#bab6fb</color>
     <color name="mainBack">#eeeef6</color>
+
+
 </resources>
