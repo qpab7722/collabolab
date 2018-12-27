@@ -65,7 +65,10 @@ public class SetPeopleActivity extends Activity {
         @Override
         public void onClick(View v) {
             if(cd.getCapacity()!=null)
-            startActivity(intent);
+                startActivity(intent);
+            else
+                Toast.makeText(getApplicationContext(),"인원수를 선택해 주세요",Toast.LENGTH_SHORT).show();
+
         }};
     View.OnClickListener mpreClickListener = new View.OnClickListener() {
         @Override
@@ -88,7 +91,6 @@ public class SetPeopleActivity extends Activity {
                     break;
             }
             cd.setCapacity(v.getTag().toString());
-            Toast.makeText(getApplicationContext(),""+v.getTag().toString(),Toast.LENGTH_SHORT).show();
         }};
 
     void ani(View v,float xdif, float ydif){
