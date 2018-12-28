@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
+import com.bumptech.glide.Glide;
+
 public class ShowActivity extends FragmentActivity {
     private  static final int NUM_PAGES = 4;
 
@@ -95,7 +97,8 @@ public class ShowActivity extends FragmentActivity {
             super.onCreateView(inflater,container,savedInstanceState);
 
             View v = inflater.inflate(R.layout.fragment_1,container,false);
-
+            ImageView ivInfo = v.findViewById(R.id.iv_info);
+            Glide.with(getActivity()).load(getResources().getDrawable(R.drawable.room1)).into(ivInfo);
             return v;
         }
     }
@@ -105,7 +108,8 @@ public class ShowActivity extends FragmentActivity {
             super.onCreateView(inflater,container,savedInstanceState);
 
             View v = inflater.inflate(R.layout.fragment_2,container,false);
-
+            ImageView ivInfo = v.findViewById(R.id.iv_info);
+            Glide.with(getActivity()).load(getResources().getDrawable(R.drawable.room4)).into(ivInfo);
             return v;
         }
     }
@@ -115,7 +119,8 @@ public class ShowActivity extends FragmentActivity {
             super.onCreateView(inflater,container,savedInstanceState);
 
             View v = inflater.inflate(R.layout.fragment_3,container,false);
-
+            ImageView ivInfo = v.findViewById(R.id.iv_info);
+            Glide.with(getActivity()).load(getResources().getDrawable(R.drawable.room3)).into(ivInfo);
             return v;
         }
     }
@@ -125,7 +130,8 @@ public class ShowActivity extends FragmentActivity {
             super.onCreateView(inflater,container,savedInstanceState);
 
             View v = inflater.inflate(R.layout.fragment_4,container,false);
-
+            ImageView ivInfo = v.findViewById(R.id.iv_info);
+            Glide.with(getActivity()).load(getResources().getDrawable(R.drawable.room2)).into(ivInfo);
             return v;
         }
     }
